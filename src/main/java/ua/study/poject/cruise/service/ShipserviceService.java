@@ -1,6 +1,7 @@
 package ua.study.poject.cruise.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ua.study.poject.cruise.persistance.entity.Service;
 import ua.study.poject.cruise.persistance.entity.Ship;
@@ -11,8 +12,10 @@ import ua.study.poject.cruise.persistance.dao.ITicketclassBonus;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-@org.springframework.stereotype.Service
+
+@Component
 public class ShipserviceService {
 
     @Autowired
@@ -24,19 +27,8 @@ public class ShipserviceService {
     @Autowired
     ITicketclassBonus ticketclassBonusImpl;
 
-    @Autowired
-    ShipserviceService shipserviceService;
-
     public List<Service> getAllServisesInSystem() {
         return serviceImpl.findAll();
-    }
-
-    private Service getServeceByName(String serviceName) {
-        return serviceImpl.findByName(serviceName);
-    }
-
-    private Service getServeceById(Long serviceId) {
-        return serviceImpl.findById(serviceId).orElse(new Service());
     }
 
     public String addNewServiceToSystem(Service newService) {
@@ -44,7 +36,7 @@ public class ShipserviceService {
             return "message.addshipservicestosystem.faildtocreate";
 
         String message;
-        if(shipserviceService.getServeceByName(newService.getServiceName()) != null){
+        if(serviceImpl.findByName(newService.getServiceName()) != null){
             message = "message.addshipservicestosystem.servicealreadyexist";
         } else {
             serviceImpl.create(newService);
@@ -59,9 +51,7 @@ public class ShipserviceService {
 
 
     @Transactional
-    public int deleteServicesFromShip(Long shipId, List<Long> listServiceId) {
-
-        int sum = 0; // сумируем все строки, которые изменены в БД
+    public void deleteServicesFromShip(Long shipId, List<Long> listServiceId) {
 
         // если сервис, который надо удалить был добавлен в TicketclassBonus, то надо эту запись удалить в первую очередь. Для этого найдем все ship_service_id
         List<Long> listShipserviceId = new ArrayList<>();
@@ -79,21 +69,19 @@ public class ShipserviceService {
         // потом удаляем services c заданного корабля
         for (Long tempId : listServiceId)
             shipserviceImpl.deleteByShipIdServiceId(shipId, tempId);
-
-        return 1;
     }
 
 
     public String addServiceToShip(Long selectedservice, Long selectedship, Integer payable) {
-        Service service = shipserviceService.getServeceById(selectedservice);
-        if (service == null)
+        Optional<Service> serviceOptional =  serviceImpl.findById(selectedservice);
+        if (!serviceOptional.isPresent())
             return "message.addshipservicetoship.errorservicenotfound";
 
-        if (shipserviceImpl.isServicePresentOnThisShip(selectedship, service.getId()))
+        if (shipserviceImpl.isServicePresentOnThisShip(selectedship, serviceOptional.get().getId()))
             return "message.addshipservicetoship.errorserviceduplicate";
 
 
-        Shipservice newShipservice = addNewServiceToShip(selectedship, payable, service);
+        Shipservice newShipservice = addNewServiceToShip(selectedship, payable, serviceOptional.get());
         if(newShipservice.getId() == null)
             return "message.addshipservicetoship.errorservicefaild";
         return "message.addshipservicetoship.serviceadded";

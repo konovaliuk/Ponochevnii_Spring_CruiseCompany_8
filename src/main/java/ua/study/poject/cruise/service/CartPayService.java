@@ -1,7 +1,7 @@
 package ua.study.poject.cruise.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ua.study.poject.cruise.persistance.dao.ITicket;
 import ua.study.poject.cruise.persistance.dao.ITicketExcursion;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Component
+@Service
 public class CartPayService {
 
 
