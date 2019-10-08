@@ -1,11 +1,10 @@
 package ua.study.poject.cruise.persistance.dao.springdata;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ua.study.poject.cruise.persistance.entity.CruisePorts;
 import ua.study.poject.cruise.persistance.dao.ICruisePorts;
+import ua.study.poject.cruise.persistance.entity.CruisePorts;
 import ua.study.poject.cruise.persistance.repository.CruisePortsRepository;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.List;
 
 @Repository
 @NoArgsConstructor
-@AllArgsConstructor
 public class CruisePortsImpl implements ICruisePorts {
 
     @Autowired
@@ -28,11 +26,4 @@ public class CruisePortsImpl implements ICruisePorts {
     public List<CruisePorts> findByCruiseId(Long cruiseId) {
         return cruisePortsRepository.findCruisePortsByCruise_IdOrderByDateIn(cruiseId);
     }
-
-    @Override
-    public void delete(CruisePorts cruisePorts) {
-        cruisePortsRepository.delete(cruisePorts);
-    }
-
-
 }

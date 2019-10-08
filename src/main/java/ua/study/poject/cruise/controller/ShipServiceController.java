@@ -1,15 +1,15 @@
 package ua.study.poject.cruise.controller;
 
-        import org.springframework.beans.factory.annotation.Autowired;
-        import org.springframework.stereotype.Controller;
-        import org.springframework.ui.Model;
-        import org.springframework.web.bind.annotation.*;
-        import ua.study.poject.cruise.persistance.entity.Service;
-        import ua.study.poject.cruise.persistance.entity.Ship;
-        import ua.study.poject.cruise.service.ShipService;
-        import ua.study.poject.cruise.service.ShipserviceService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+import ua.study.poject.cruise.persistance.entity.Service;
+import ua.study.poject.cruise.persistance.entity.Ship;
+import ua.study.poject.cruise.service.ShipService;
+import ua.study.poject.cruise.service.ShipserviceService;
 
-        import java.util.List;
+import java.util.List;
 
 @Controller
 @SessionAttributes({"addShipServiceToShipMessage", "addshipservicestosystemMessage", "allServicesInSystem",
@@ -46,7 +46,6 @@ public class ShipServiceController {
         model.addAttribute("allServicesOnSelectedShip", shipService.getAllServicesByShipId(ship.getId()));
 
         if (selectedservice == null) {
-//            model.addAttribute("addShipServiceToShipMessage", "message.addshipservicetoship.error2");
             return "addshipservicetoship";
         }
 
@@ -91,8 +90,4 @@ public class ShipServiceController {
 
         return "redirect:/addshipservicetoship";
     }
-
-
-
-
 }

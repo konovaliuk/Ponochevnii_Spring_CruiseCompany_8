@@ -93,13 +93,15 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDate1in(String date1in) {
-        if (!date1in.equals(""))
+        if (!date1in.equals("")) {
             this.date1in = LocalDateTime.parse(date1in, formatter);
+        }
     }
 
     public void setDate1out(String date1out) {
-        if (!date1out.equals(""))
+        if (!date1out.equals("")) {
             this.date1out = LocalDateTime.parse(date1out, formatter);
+        }
     }
 
     public void setSelectedport2(Long selectedport2) {
@@ -107,13 +109,15 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDate2in(String date2in) {
-        if(!date2in.equals(""))
-        this.date2in = LocalDateTime.parse(date2in, formatter);
+        if (!date2in.equals("")) {
+            this.date2in = LocalDateTime.parse(date2in, formatter);
+        }
     }
 
     public void setDate2out(String date2out) {
-        if(!date2out.equals(""))
-        this.date2out = LocalDateTime.parse(date2out, formatter);
+        if (!date2out.equals("")) {
+            this.date2out = LocalDateTime.parse(date2out, formatter);
+        }
     }
 
     public void setSelectedport3(Long selectedport3) {
@@ -121,13 +125,15 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDate3in(String date3in) {
-        if(!date3in.equals(""))
-        this.date3in = LocalDateTime.parse(date3in, formatter);
+        if (!date3in.equals("")) {
+            this.date3in = LocalDateTime.parse(date3in, formatter);
+        }
     }
 
     public void setDate3out(String date3out) {
-        if(!date3out.equals(""))
-        this.date3out = LocalDateTime.parse(date3out, formatter);
+        if (!date3out.equals("")) {
+            this.date3out = LocalDateTime.parse(date3out, formatter);
+        }
     }
 
     public void setSelectedport4(Long selectedport4) {
@@ -135,13 +141,15 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDate4in(String date4in) {
-        if(!date4in.equals(""))
-        this.date4in = LocalDateTime.parse(date4in, formatter);
+        if (!date4in.equals("")) {
+            this.date4in = LocalDateTime.parse(date4in, formatter);
+        }
     }
 
     public void setDate4out(String date4out) {
-        if(!date4out.equals(""))
-        this.date4out = LocalDateTime.parse(date4out, formatter);
+        if (!date4out.equals("")) {
+            this.date4out = LocalDateTime.parse(date4out, formatter);
+        }
     }
 
     public void setSelectedport5(Long selectedport5) {
@@ -149,13 +157,15 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDate5in(String date5in) {
-        if(!date5in.equals(""))
-        this.date5in = LocalDateTime.parse(date5in, formatter);
+        if (!date5in.equals("")) {
+            this.date5in = LocalDateTime.parse(date5in, formatter);
+        }
     }
 
     public void setDate5out(String date5out) {
-        if(!date5out.equals(""))
-        this.date5out = LocalDateTime.parse(date5out, formatter);
+        if (!date5out.equals("")) {
+            this.date5out = LocalDateTime.parse(date5out, formatter);
+        }
     }
 
     public void setSelectedport6(Long selectedport6) {
@@ -163,13 +173,15 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDate6in(String date6in) {
-        if(!date6in.equals(""))
-        this.date6in = LocalDateTime.parse(date6in, formatter);
+        if (!date6in.equals("")) {
+            this.date6in = LocalDateTime.parse(date6in, formatter);
+        }
     }
 
     public void setDate6out(String date6out) {
-        if(!date6out.equals(""))
-        this.date6out = LocalDateTime.parse(date6out, formatter);
+        if (!date6out.equals("")) {
+            this.date6out = LocalDateTime.parse(date6out, formatter);
+        }
     }
 
     public void setSelectedport7(Long selectedport7) {
@@ -177,13 +189,15 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDate7in(String date7in) {
-        if(!date7in.equals(""))
-        this.date7in = LocalDateTime.parse(date7in, formatter);
+        if (!date7in.equals("")) {
+            this.date7in = LocalDateTime.parse(date7in, formatter);
+        }
     }
 
     public void setDate7out(String date7out) {
-        if(!date7out.equals(""))
-        this.date7out = LocalDateTime.parse(date7out, formatter);
+        if (!date7out.equals("")) {
+            this.date7out = LocalDateTime.parse(date7out, formatter);
+        }
     }
 
     public void setSelectedportstop(Long selectedportstop) {
@@ -191,7 +205,8 @@ public class DtoCruisePorts implements Serializable {
     }
 
     public void setDatestop(String datestop) {
-        if(!datestop.equals(""))
-        this.datestop = LocalDateTime.parse(datestop, formatter);
+        if (!datestop.equals("")) {
+            this.datestop = LocalDateTime.parse(datestop, formatter);
+        }
     }
 }

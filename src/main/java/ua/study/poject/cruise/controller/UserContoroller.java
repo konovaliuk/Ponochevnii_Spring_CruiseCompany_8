@@ -20,9 +20,6 @@ public class UserContoroller {
     CruiseService cruiseService;
 
 
-
-
-
     @GetMapping("/signin")
     public String loginGet() {
         return "login";
@@ -31,8 +28,9 @@ public class UserContoroller {
     @PostMapping("/signin")
     public String loginPost(User registredUser, Model model) {
         registredUser = userService.findUserByLoginPassword(registredUser.getLogin(), registredUser.getPassword());
-        if (registredUser == null)
+        if (registredUser == null) {
             model.addAttribute("signinMessage", "message.loginerror");
+        }
         else {
             model.addAttribute("currentuser", registredUser);
             model.addAttribute("allCruises", cruiseService.viewAllCruises());
@@ -45,14 +43,17 @@ public class UserContoroller {
     @GetMapping("/myaccount")
     public String myAccountGet(@ModelAttribute("currentuser") User currentuser) {
 
-        switch (currentuser.getRole().getRole()){
-            case Role.ROLE_ADMIN: return "myaccountadmin";
-            case Role.ROLE_MANAGER: return "myaccountmanager";
-            case Role.ROLE_CUSTOMER: return "myaccountcustomer";
-            default: return "redirect:/startpage";
+        switch (currentuser.getRole().getRole()) {
+            case Role.ROLE_ADMIN:
+                return "myaccountadmin";
+            case Role.ROLE_MANAGER:
+                return "myaccountmanager";
+            case Role.ROLE_CUSTOMER:
+                return "myaccountcustomer";
+            default:
+                return "redirect:/startpage";
         }
     }
-
 
 
     @GetMapping("/signup")
@@ -69,11 +70,6 @@ public class UserContoroller {
         model.addAttribute("registrMessage", userService.addNewUser(user));
         return "redirect:/signup";
     }
-
-
-
-
-
 
 
     @GetMapping("/changeuserrole")

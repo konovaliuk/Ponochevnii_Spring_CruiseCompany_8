@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import javax.servlet.*;
 import java.io.IOException;
 
+/**
+ * The Form EncodingFilter class is used to set the appropriate encoding in the request
+ */
 @Component
 @Order(1)
 public class FormEncodingFilter implements Filter {
@@ -18,19 +21,29 @@ public class FormEncodingFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) {
         encoding = filterConfig.getInitParameter(ENCODING_INIT_PARAM_NAME);
-        if (encoding == null)
+        if (encoding == null) {
             encoding = ENCODING_DEFAULT;
+        }
     }
 
+    /**
+     * Method doFilter sets the encoding to UTF-8 if it is not set
+     * and transfers control to the next filter or servlet
+     * @param servletRequest
+     * @param servletResponse
+     * @param filterChain
+     * @throws IOException
+     * @throws ServletException
+     */
     @Override
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         String contentType = servletRequest.getContentType();
-        if (contentType != null && contentType.startsWith(FILTERBLE_CONTENT_TYPE))
+        if (contentType != null && contentType.startsWith(FILTERBLE_CONTENT_TYPE)) {
             servletRequest.setCharacterEncoding(encoding);
+        }
         filterChain.doFilter(servletRequest, servletResponse);
     }
 
     @Override
-    public void destroy() {
-    }
+    public void destroy() {}
 }

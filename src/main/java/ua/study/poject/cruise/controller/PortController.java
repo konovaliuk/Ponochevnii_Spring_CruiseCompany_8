@@ -27,10 +27,9 @@ public class PortController {
         return "redirect:/createport";
     }
 
-
     @GetMapping("/viewport")
     public String viewPortGet(Model model, @RequestParam Long selectedPortId) {
-        model.addAttribute("allExcursions", portExcursionService.ViewExcursionsInPortByPortId(selectedPortId));
+        model.addAttribute("allExcursions", portExcursionService.viewExcursionsInPortByPortId(selectedPortId));
         model.addAttribute("selectedPort", portExcursionService.getPortById(selectedPortId));
         return "viewport";
     }

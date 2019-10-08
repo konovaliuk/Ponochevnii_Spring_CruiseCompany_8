@@ -1,11 +1,10 @@
 package ua.study.poject.cruise.persistance.dao.springdata;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ua.study.poject.cruise.persistance.entity.Ship;
 import ua.study.poject.cruise.persistance.dao.IShip;
+import ua.study.poject.cruise.persistance.entity.Ship;
 import ua.study.poject.cruise.persistance.repository.ShipRepository;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.Optional;
 
 @Repository
 @NoArgsConstructor
-@AllArgsConstructor
 public class ShipImpl implements IShip {
 
     @Autowired

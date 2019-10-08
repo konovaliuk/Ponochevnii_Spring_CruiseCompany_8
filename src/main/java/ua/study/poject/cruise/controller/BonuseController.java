@@ -36,8 +36,9 @@ public class BonuseController {
     public String bonuseGet(Model model, @SessionAttribute User currentuser) {
         List<UserShip> userShips = managerAndBonuseService.getAllShipsByManager(currentuser);
         List<Cruise> cruiseList = new ArrayList<>();
-        for (UserShip userShip : userShips)
+        for (UserShip userShip : userShips) {
             cruiseList.addAll(cruiseService.getAllCruisesByShip(userShip.getShip()));     //allServicesOnShip
+        }
 
         model.addAttribute("cruiseListBonuse", cruiseList);
         model.addAttribute("ticketclassList", managerAndBonuseService.getAllTicketclass());
@@ -60,7 +61,7 @@ public class BonuseController {
             return "redirect:/managebonusesview";
         }
         // 5. Загрузить список всех сервисов на этом корабле и отправить на JSP
-        model.addAttribute("shipserviceList", shipService.getAllServicesByShipId(cruise.get().getShip().getId()));
+        model.addAttribute("shipserviceList", shipService.findAllServicesByShipId(cruise.get().getShip().getId()));
 
 
         // 6. Получить списки бонусов для каждого Ticketclass и отправить на JSP
@@ -82,7 +83,7 @@ public class BonuseController {
                                  @RequestParam Long selectedticketclass,
                                  @RequestParam Long selectedshipserviceid) {
 
-        if(selectedshipserviceid == null || selectedticketclass == null){
+        if (selectedshipserviceid == null || selectedticketclass == null) {
             model.addAttribute("addBonusesMessage", "message.managebonuses.youneedselectcruise");
             return "redirect:/managebonusesview";
         }

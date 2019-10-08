@@ -1,11 +1,10 @@
 package ua.study.poject.cruise.persistance.dao.springdata;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import ua.study.poject.cruise.persistance.entity.Excursion;
 import ua.study.poject.cruise.persistance.dao.IExcursion;
+import ua.study.poject.cruise.persistance.entity.Excursion;
 import ua.study.poject.cruise.persistance.repository.ExcursionRepository;
 
 import java.util.List;
@@ -13,7 +12,6 @@ import java.util.Optional;
 
 @Repository
 @NoArgsConstructor
-@AllArgsConstructor
 public class ExcursionImpl implements IExcursion {
 
     @Autowired
@@ -34,8 +32,4 @@ public class ExcursionImpl implements IExcursion {
         return excursionRepository.findByPort_Id(portId);
     }
 
-//    @Override
-//    public Excursion findByExcursionName(String excursionName) {
-//        return excursionRepository.findExcursionByExcursionName(excursionName);
-//    }
 }

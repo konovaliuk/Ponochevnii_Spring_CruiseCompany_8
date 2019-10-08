@@ -2,6 +2,9 @@ package ua.study.poject.cruise.util;
 
 import static ua.study.poject.cruise.persistance.entity.Ticketclass.*;
 
+/**
+ * The class contains string constants that are used in different parts of the program
+ */
 public class StringStorage {
 
     // All
@@ -86,10 +89,10 @@ public class StringStorage {
     public static final String CREATE_SHIP_FORM = "createshipForm";
     public static final String SHIP_NAME = "shipName";
     public static final String N_STAFF = "nStaff";
-    public static final String N_FIRST_CLASS= "nFirstClass";
-    public static final String N_SECOND_CLASS= "nSecondClass";
-    public static final String N_THIRD_CLASS= "nThirdClass";
-    public static final String N_FOURTH_CLASS= "nFourthClass";
+    public static final String N_FIRST_CLASS = "nFirstClass";
+    public static final String N_SECOND_CLASS = "nSecondClass";
+    public static final String N_THIRD_CLASS = "nThirdClass";
+    public static final String N_FOURTH_CLASS = "nFourthClass";
 
     // Edit account and SignUp
     public static final String EDIT_ACCOUNT_FORM = "editaccountForm";
@@ -145,15 +148,6 @@ public class StringStorage {
     // View cart
     public static final String DELETE_CRUISE_FROM_CART_FORM = "deletecruisefromcartForm";
     public static final String DELETE_EXCURSION_FROM_CART_FORM = "deleteexcursionfromcartForm";
-
-
-
-
-
-
-
-
-
 
 
 }

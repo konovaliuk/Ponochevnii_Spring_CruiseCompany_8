@@ -1,6 +1,5 @@
 package ua.study.poject.cruise.persistance.dao.springdata;
 
-import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -14,7 +13,6 @@ import java.util.Optional;
 
 @Repository
 @NoArgsConstructor
-@AllArgsConstructor
 public class TicketImpl implements ITicket {
 
     @Autowired

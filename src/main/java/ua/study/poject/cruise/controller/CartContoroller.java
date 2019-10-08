@@ -59,9 +59,11 @@ public class CartContoroller {
                                   @RequestParam Long cruiseIdToCart,
                                   @RequestParam String ticketclassForm) {
 
-        for (PrintableCruise currentCruise : allCruises)
-            if (currentCruise.getCruise().getId().equals(cruiseIdToCart))
+        for (PrintableCruise currentCruise : allCruises) {
+            if (currentCruise.getCruise().getId().equals(cruiseIdToCart)) {
                 cruisesInCart.add(currentCruise);
+            }
+        }
 
         for (Ticketclass currentTicketclass : allTicketClasses) {
             if (currentTicketclass.getTicketclassName().equals(ticketclassForm)) {
@@ -71,7 +73,6 @@ public class CartContoroller {
                 return "redirect:/viewcruise?selectedCruiseId=" + cruiseIdToCart;
             }
         }
-
         model.addAttribute(VIEW_CRUISE_MESSAGE, "message.addtocart.erraddcruise"); // TODO errorPage
         return "redirect:/viewcruise?selectedCruiseId=" + cruiseIdToCart;
     }
@@ -89,8 +90,9 @@ public class CartContoroller {
             model.addAttribute(TICKET_CLASSES_IN_CART, new ArrayList<Ticketclass>());
             model.addAttribute(EXCURSIONS_IN_CART, new ArrayList<Excursion>());
             model.addAttribute(VIEW_CART_MESSAGE, result.get(true));
-        } else
+        } else {
             model.addAttribute(VIEW_CART_MESSAGE, result.get(false));
+        }
 
         return "redirect:/viewcart";
     }
@@ -132,13 +134,10 @@ public class CartContoroller {
 
     @PostMapping("/deletefromcart/all")
     public String DeleteFromCartAllPost(Model model) {
-
         model.addAttribute(CRUISES_IN_CART, new ArrayList<PrintableCruise>());
         model.addAttribute(TICKET_CLASSES_IN_CART, new ArrayList<Ticketclass>());
         model.addAttribute(EXCURSIONS_IN_CART, new ArrayList<Excursion>());
         model.addAttribute(VIEW_CART_MESSAGE, "message.deletefromcart.cruisenotfound");
         return "redirect:/viewcart";
     }
-
-
 }

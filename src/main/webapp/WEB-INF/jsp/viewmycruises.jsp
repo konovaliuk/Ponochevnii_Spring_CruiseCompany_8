@@ -1,7 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%--<%@ taglib prefix="date" uri="/WEB-INF/tld/custom.tld" %>--%>
+<%@ taglib prefix="date" uri="/WEB-INF/tld/custom.tld" %>
 <%@ page import="ua.study.poject.cruise.commands.ActionStorage" %>
 <%@ page import="ua.study.poject.cruise.util.StringStorage" %>
 <fmt:setLocale value="${language}"/>
@@ -59,8 +59,8 @@
             <tr>
                 <td><c:out value="${currentPort.port.country}"/></td>
                 <td><c:out value="${currentPort.port.city}"/></td>
-                <td><c:out value="${currentPort.dateIn}"/></td>
-                <td><c:out value="${currentPort.dateOut}"/></td>
+                <td><date:out value="${currentPort.dateIn}"/></td>
+                <td><date:out value="${currentPort.dateOut}"/></td>
             </tr>
         </c:forEach>
 

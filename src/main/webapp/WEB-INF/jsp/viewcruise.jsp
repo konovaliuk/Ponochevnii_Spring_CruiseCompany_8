@@ -1,6 +1,7 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="date" uri="/WEB-INF/tld/custom.tld" %>
 <%@ page import="ua.study.poject.cruise.commands.ActionStorage" %>
 <%@ page import="ua.study.poject.cruise.util.StringStorage" %>
 <fmt:setLocale value="${language}"/>
@@ -55,8 +56,8 @@
             <tr>
                 <td><c:out value="${cruisePorts.port.country}"/></td>
                 <td><c:out value="${cruisePorts.port.city}"/></td>
-                <td><c:out value="${cruisePorts.dateIn}"/></td>
-                <td><c:out value="${cruisePorts.dateOut}"/></td>
+                <td><date:out value="${cruisePorts.dateIn}"/></td>
+                <td><date:out value="${cruisePorts.dateOut}"/></td>
                 <td>
                     <form method="get" action="${ActionStorage.VIEW_PORT}">
                         <input type="hidden" name="${StringStorage.SELECTED_PORT_ID}"

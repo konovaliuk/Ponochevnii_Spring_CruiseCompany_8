@@ -33,8 +33,7 @@ public class ExcursionController {
 
     @GetMapping("/viewexcursion")
     public String viewExcursionGet(Model model, @RequestParam Long viewExcursionId) {
-        model.addAttribute("excursion", portExcursionService.ViewExcursionsInPortById(viewExcursionId));
+        model.addAttribute("excursion", portExcursionService.viewExcursionsInPortById(viewExcursionId));
         return "viewexcursion";
     }
-
 }

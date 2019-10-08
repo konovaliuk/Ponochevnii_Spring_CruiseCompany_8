@@ -39,14 +39,15 @@ public class MainController {
         model.addAttribute("allTicketClasses", managerAndBonuseService.getAllTicketclass());
         model.addAttribute("allCruises", cruiseService.viewAllPrintableCruises());
 
-        if (!cruisesInCart.isPresent())
+        if (!cruisesInCart.isPresent()) {
             model.addAttribute("cruisesInCart", new ArrayList<PrintableCruise>());
-        if (!ticketclassesInCart.isPresent())
+        }
+        if (!ticketclassesInCart.isPresent()) {
             model.addAttribute("ticketclassesInCart", new ArrayList<Ticketclass>());
-        if (!excurisionsInCart.isPresent())
+        }
+        if (!excurisionsInCart.isPresent()) {
             model.addAttribute("excurisionsInCart", new ArrayList<Excursion>());
-
-
+        }
         return "startpage";
     }
 }

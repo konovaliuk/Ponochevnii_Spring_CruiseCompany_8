@@ -20,5 +20,4 @@ public class LanguageController {
 
         return "redirect:/startpage";
     }
-
 }

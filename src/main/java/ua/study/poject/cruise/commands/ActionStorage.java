@@ -1,5 +1,9 @@
 package ua.study.poject.cruise.commands;
 
+/**
+ * ActionStorage is singletone class that stores all the commands that the user can execute,
+ * depending on his role
+ */
 public class ActionStorage {
 
     public final static String SIGN_IN = "signin";

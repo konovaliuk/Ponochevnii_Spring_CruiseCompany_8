@@ -9,14 +9,12 @@ import ua.study.poject.cruise.persistance.entity.Ship;
 import ua.study.poject.cruise.persistance.entity.TicketclassBonus;
 import ua.study.poject.cruise.persistance.entity.User;
 import ua.study.poject.cruise.persistance.entity.dto.DtoCruisePorts;
-import ua.study.poject.cruise.persistance.dao.ICruisePorts;
 import ua.study.poject.cruise.persistance.entity.printableentity.PrintableCruise;
 import ua.study.poject.cruise.service.*;
 
 import java.util.List;
 
 import static ua.study.poject.cruise.persistance.entity.Ticketclass.*;
-import static ua.study.poject.cruise.persistance.entity.Ticketclass.TICKET_CLASS_FOURTH;
 
 @Controller
 @SessionAttributes({"createcruiseMessage", "allPorts", "allShips", "viewcruiseMessage", "allBonusesForTicketClass1",
@@ -46,8 +44,9 @@ public class CruiseController {
     public String createPort(Model model, @RequestParam Long selectedCruiseId) {
 
         PrintableCruise selectedPrintableCruise = printableCruise.findPrintableCruiseByCruiseId(selectedCruiseId);
-        if (selectedPrintableCruise == null)
+        if (selectedPrintableCruise == null) {
             return "redirect:/startpage";
+        }
         model.addAttribute("cruise", selectedPrintableCruise);
 
 // список услуг на данном корабле
@@ -70,17 +69,12 @@ public class CruiseController {
         return "viewcruise";
     }
 
-
-
-
     @GetMapping("/createcruise")
     public String createCruiseGet(Model model) {
         model.addAttribute("allPorts", portExcursionService.getAllPorts());
         model.addAttribute("allShips", shipService.getAllShips());
         return "createcruise";
     }
-
-
 
     @PostMapping("/createcruise")
     public String createCruisePost(DtoCruisePorts dtoCruisePorts, @RequestParam("selectedship") Long selectedship, Model model) {
